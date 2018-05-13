@@ -47,4 +47,7 @@ dependencies {
 
     // picaso library
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // tab bar
+    implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
 }
