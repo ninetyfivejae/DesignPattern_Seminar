@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "321496112891",
+    "firebase_url": "https://designpatternseminar-4f170.firebaseio.com",
+    "project_id": "designpatternseminar-4f170",
+    "storage_bucket": "designpatternseminar-4f170.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321496112891:android:d68efefc318c1d4d",
+        "android_client_info": {
+          "package_name": "com.example.parkminhyun.java_designpattern_seminar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321496112891-313rr7bqt7t4kipt962iue7bmbvl2a2l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.parkminhyun.java_designpattern_seminar",
+            "certificate_hash": "23ae886003df1f0761af21a75651b0fb3e44cadc"
+          }
+        },
+        {
+          "client_id": "321496112891-uf13la0p3m7ik0174oeq00bvgmqvbjnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh-vsEX6g1FXG5gE_qNxb1QrGjaIEr9zs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321496112891-uf13la0p3m7ik0174oeq00bvgmqvbjnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
