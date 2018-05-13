@@ -1,7 +1,5 @@
 package com.example.parkminhyun.designpattern_seminar.screen;
 
-import android.support.v4.app.FragmentManager;
-
 /**
  * Created by ParkMinHyun on 2018-05-13.
  */

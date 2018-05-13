@@ -1,8 +1,7 @@
 package com.example.parkminhyun.designpattern_seminar.screen;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 
 import com.example.parkminhyun.designpattern_seminar.R;
 import com.example.parkminhyun.designpattern_seminar.common.base.BaseActivity;
@@ -14,6 +13,8 @@ public class MainActivity extends BaseActivity implements MainPageInterface.View
 
     @BindView(R.id.mainTabBar)
     NavigationTabStrip mainTabBar;
+
+    RecyclerView memberRecyclerView;
 
     private MainPageInterface.Presenter mainPresenter;
 
@@ -28,7 +29,6 @@ public class MainActivity extends BaseActivity implements MainPageInterface.View
 
     @Override
     public void updateBottomMenuButton() {
-
     }
 
     @Override

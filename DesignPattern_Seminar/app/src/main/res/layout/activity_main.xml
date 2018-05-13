@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
+    android:orientation="vertical"
     tools:context="com.example.parkminhyun.designpattern_seminar.screen.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="#ff252e39">
 
         <View
@@ -42,6 +43,9 @@
 
     </FrameLayout>
 
-
-
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/custom_layout"
+        layout="@layout/layout_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

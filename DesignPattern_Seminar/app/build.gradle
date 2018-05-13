@@ -50,4 +50,7 @@ dependencies {
 
     // tab bar
     implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
+
+    // firebase library
+    implementation "com.google.firebase:firebase-database:$firebase_version"
 }

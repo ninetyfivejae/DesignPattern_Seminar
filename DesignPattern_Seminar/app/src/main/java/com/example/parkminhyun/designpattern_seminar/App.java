@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Library 초기화 및 context를 받기 위한 Class
  * Created by ParkMinHyun on 2018-05-11.
@@ -13,7 +15,7 @@ public class App extends Application {
 
     private static App instance;
 
-//    private static FirebaseDatabase firebaseDatabase;
+    private static FirebaseDatabase firebaseDatabase;
     private static final String APP_NAME = "DesignPattern_Seminar";
 
     @Override
@@ -30,9 +32,13 @@ public class App extends Application {
     }
 
     private void initLibraries() {
-        initNaverLogin();
         initRealm();
         initFireBase();
+        initNaverLogin();
+    }
+
+    private void initFireBase() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
     private void initNaverLogin() {
@@ -48,10 +54,6 @@ public class App extends Application {
 //        Realm.setDefaultConfiguration(realmConfiguration);
     }
 
-    private void initFireBase() {
-//        firebaseDatabase = FirebaseDatabase.getInstance();
-    }
-
     public static App getInstance() {
         return instance;
     }
@@ -60,12 +62,11 @@ public class App extends Application {
         return getCurrentActivity();
     }
 
+    public static FirebaseDatabase getFirebaseDatabase() {
+        return firebaseDatabase;
+    }
+
 //    public static Realm getRealmInstance() {
 //        return Realm.getDefaultInstance();
 //    }
-
-//    public static FirebaseDatabase getFirebaseDatabase() {
-//        return firebaseDatabase;
-//    }
-
 }
