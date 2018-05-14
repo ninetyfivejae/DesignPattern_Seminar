@@ -1,13 +1,17 @@
 package com.example.parkminhyun.java_designpattern_seminar.screen;
 
 import android.app.Activity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseActivity;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
 import butterknife.BindView;
+
+import static com.gigamole.navigationtabstrip.NavigationTabStrip.*;
 
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
@@ -17,7 +21,9 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     @BindView(R.id.mainTabBar)
     NavigationTabStrip mainTabBar;
 
-    private RecyclerView memberRecyclerView;
+    @BindView(R.id.memberRecyclerView)
+    RecyclerView memberRecyclerView;
+
     private MainInterface.Presenter mainPresenter;
     private int currentTabIndex = 0;
 
@@ -31,9 +37,19 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     private void initTabBar() {
         mainTabBar.setTabIndex(currentTabIndex, true);
+        mainTabBar.setOnTabStripSelectedIndexListener(new OnTabStripSelectedIndexListener() {
+            @Override
+            public void onStartTabSelected(String title, int index) {
+                showToastText(title);
+            }
+
+            @Override
+            public void onEndTabSelected(String title, int index) {}
+        });
     }
 
     private void initRecyclerView() {
+        memberRecyclerView.setLayoutManager(new LinearLayoutManager(App.getInstance()));
     }
 
     private void initButtons() {

@@ -23,6 +23,7 @@ public class MainPresenter implements MainInterface.Presenter {
 
     @Override
     public void init() {
+        hideKeyBoard();
         databaseMember = App.getFirebaseDatabase().getReference();
     }
 
