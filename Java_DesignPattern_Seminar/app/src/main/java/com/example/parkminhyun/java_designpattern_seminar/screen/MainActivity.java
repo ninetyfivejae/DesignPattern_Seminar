@@ -19,30 +19,31 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     private RecyclerView memberRecyclerView;
     private MainInterface.Presenter mainPresenter;
-
     private int currentTabIndex = 0;
 
     @Override
     protected void init() {
-        mainTabBar.setTabIndex(currentTabIndex, true);
-//        mainLinearLayout.setOnTouchListener(new OnSwipeTouchListener(App.getInstance()) {
-//            @Override
-//            public void onSwipeLeft() {
-//                if (currentTabIndex == 0) {
-//                    currentTabIndex = 2;
-//                } else {
-//                    currentTabIndex -= 1;
-//                }
-//                mainTabBar.setTabIndex(currentTabIndex, true);
-//            }
-//
-//            @Override
-//            public void onSwipeRight() {
-//                currentTabIndex = (currentTabIndex + 1) % 3;
-//                mainTabBar.setTabIndex(currentTabIndex, true);
-//            }
-//        });
+        initTabBar();
+        initRecyclerView();
+        initButtons();
         mainPresenter.init();
+    }
+
+    private void initTabBar() {
+        mainTabBar.setTabIndex(currentTabIndex, true);
+    }
+
+    private void initRecyclerView() {
+    }
+
+    private void initButtons() {
+        memberListView.setOnClickButtonListener(v -> {
+            switch (v.getId()) {
+                case R.id.memberAddButton:
+                    mainPresenter.onClickAddMemberButton(mainTabBar.getTabIndex(), memberListView.getNameText(), memberListView.getPhoneNumText());
+                    break;
+            }
+        });
     }
 
 //

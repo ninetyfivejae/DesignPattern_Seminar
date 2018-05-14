@@ -81,9 +81,5 @@
                 android:text="윤명식, 박민현, 안태현, 차세민, 김태석, 오성민, 이명호, 성민경" />
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/memberRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </merge>

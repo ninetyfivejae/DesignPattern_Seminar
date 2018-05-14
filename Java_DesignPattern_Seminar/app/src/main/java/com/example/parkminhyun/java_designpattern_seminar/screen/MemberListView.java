@@ -29,6 +29,10 @@ public class MemberListView extends FrameLayout {
     @BindView(R.id.memberAddButton)
     View memberAddButton;
 
+    public void setOnClickButtonListener(OnClickListener onClickListener) {
+        this.memberAddButton.setOnClickListener(onClickListener);
+    }
+
     public MemberListView(Context context) {
         this(context, null);
     }
@@ -51,5 +55,13 @@ public class MemberListView extends FrameLayout {
     private void init(Context context) {
         inflate(context, R.layout.layout_member, this);
         ButterKnife.bind(this);
+    }
+
+    public String getNameText(){
+        return nameText.getText().toString();
+    }
+
+    public String getPhoneNumText(){
+        return phoneNumText.getText().toString();
     }
 }
