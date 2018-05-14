@@ -30,7 +30,6 @@ public class MainPresenter implements MainInterface.Presenter {
 
     @Override
     public void init() {
-        hideKeyBoard();
         initMemberData();
     }
 
@@ -48,6 +47,7 @@ public class MainPresenter implements MainInterface.Presenter {
         memberDataReference.child(String.valueOf(index + 16) + "th").child(id).setValue(user);
 
         mainView.clearTextView();
+        mainView.updateMemberRecyclerView(memberVOList);
     }
 
     @Override
@@ -63,14 +63,18 @@ public class MainPresenter implements MainInterface.Presenter {
                         memberVOList.add(memberVO);
                     }
                 }
+                mainView.updateMemberRecyclerView(memberVOList);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         });
     }
 
+    @Override
+    public List<MemberVO> getCurrentMemberList() {
+        return memberVOList;
+    }
 
     public void hideKeyBoard() {
         InputMethodManager imm = (InputMethodManager) App.getInstance().getSystemService(Activity.INPUT_METHOD_SERVICE);

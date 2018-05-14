@@ -18,6 +18,10 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
 
     List<MemberVO> memberVOList;
 
+    public MemberRVAdapter(List<MemberVO> memberVOList) {
+        this.memberVOList = memberVOList;
+    }
+
     @Override
     public MemberHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_item, parent, false);
@@ -33,5 +37,9 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
     @Override
     public int getItemCount() {
         return memberVOList.size();
+    }
+
+    public void setMemberVOList(List<MemberVO> memberVOList) {
+        this.memberVOList = memberVOList;
     }
 }

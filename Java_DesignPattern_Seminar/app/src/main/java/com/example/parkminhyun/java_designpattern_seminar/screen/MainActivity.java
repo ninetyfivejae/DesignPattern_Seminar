@@ -7,7 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseActivity;
+import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -24,13 +27,15 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     @BindView(R.id.memberRecyclerView)
     RecyclerView memberRecyclerView;
 
+    private MemberRVAdapter memberRVAdapter;
     private MainInterface.Presenter mainPresenter;
 
     @Override
     protected void init() {
         initTabBar();
-        initRecyclerView();
         initButtons();
+        initRecyclerView();
+
         mainPresenter.init();
     }
 
@@ -49,6 +54,8 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     private void initRecyclerView() {
         memberRecyclerView.setLayoutManager(new LinearLayoutManager(App.getInstance()));
+        memberRVAdapter = new MemberRVAdapter(mainPresenter.getCurrentMemberList());
+        memberRecyclerView.setAdapter(memberRVAdapter);
     }
 
     private void initButtons() {
@@ -90,5 +97,11 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     public void clearTextView() {
         memberListView.nameText.setText("");
         memberListView.phoneNumText.setText("");
+    }
+
+    @Override
+    public void updateMemberRecyclerView(List<MemberVO> memberVOList) {
+        memberRVAdapter.setMemberVOList(memberVOList);
+        memberRVAdapter.notifyDataSetChanged();
     }
 }
