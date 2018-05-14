@@ -6,22 +6,14 @@ package com.example.parkminhyun.java_designpattern_seminar.common.vo;
 
 public class MemberVO {
 
-    int number;
     String name;
     String phoneNum;
 
-    public MemberVO(int number, String name, String phoneNum) {
-        this.number = number;
+    public MemberVO() {}
+
+    public MemberVO(String name, String phoneNum) {
         this.name = name;
         this.phoneNum = phoneNum;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public String getName() {

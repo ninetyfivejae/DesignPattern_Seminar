@@ -8,12 +8,15 @@ public interface MainInterface {
 
 
     interface View {
+        void clearTextView();
     }
 
     interface Presenter {
         void init();
 
         void onClickAddMemberButton(int number, String name, String phoneNum);
+
+        void setMemberList(int index);
     }
 
 

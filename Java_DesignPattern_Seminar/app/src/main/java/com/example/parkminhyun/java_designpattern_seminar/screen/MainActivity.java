@@ -25,7 +25,6 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     RecyclerView memberRecyclerView;
 
     private MainInterface.Presenter mainPresenter;
-    private int currentTabIndex = 0;
 
     @Override
     protected void init() {
@@ -36,11 +35,11 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     }
 
     private void initTabBar() {
-        mainTabBar.setTabIndex(currentTabIndex, true);
+        mainTabBar.setTabIndex(0, true);
         mainTabBar.setOnTabStripSelectedIndexListener(new OnTabStripSelectedIndexListener() {
             @Override
             public void onStartTabSelected(String title, int index) {
-                showToastText(title);
+                mainPresenter.setMemberList(index);
             }
 
             @Override
@@ -87,4 +86,9 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
         return R.layout.activity_main;
     }
 
+    @Override
+    public void clearTextView() {
+        memberListView.nameText.setText("");
+        memberListView.phoneNumText.setText("");
+    }
 }
