@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/mainLinearLayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
@@ -12,6 +11,7 @@
     tools:context="com.example.parkminhyun.java_designpattern_seminar.screen.MainActivity">
 
     <FrameLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ff252e39">
@@ -21,7 +21,7 @@
             android:layout_height="4dp"
             android:layout_gravity="center"
             android:layout_marginTop="18dp"
-            android:background="#182128"/>
+            android:background="#182128" />
 
         <com.gigamole.navigationtabstrip.NavigationTabStrip
             android:id="@+id/mainTabBar"
@@ -41,18 +41,27 @@
             app:nts_titles="@array/titles"
             app:nts_type="point"
             app:nts_typeface="fonts/moon.otf"
-            app:nts_weight="7dp"/>
+            app:nts_weight="7dp" />
 
     </FrameLayout>
 
-    <com.example.parkminhyun.java_designpattern_seminar.screen.MemberListView
-        android:id="@+id/custom_layout"
+    <com.example.parkminhyun.java_designpattern_seminar.screen.AddMemberListView
+        android:id="@+id/add_member_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </com.example.parkminhyun.java_designpattern_seminar.screen.MemberListView>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tabLayout"
+        android:paddingRight="8dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/memberRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/noticeView"
+        android:layout_below="@id/add_member_layout" />
+
+    <com.example.parkminhyun.java_designpattern_seminar.screen.NoticeView
+        android:id="@+id/noticeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

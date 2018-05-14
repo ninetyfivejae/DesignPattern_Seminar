@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * Created by ParkMinHyun on 2018-05-14.
  */
 
-public class MemberListView extends FrameLayout {
+public class AddMemberListView extends FrameLayout {
 
     @BindView(R.id.nameText)
     MaterialEditText nameText;
@@ -33,27 +33,27 @@ public class MemberListView extends FrameLayout {
         this.memberAddButton.setOnClickListener(onClickListener);
     }
 
-    public MemberListView(Context context) {
+    public AddMemberListView(Context context) {
         this(context, null);
     }
 
-    public MemberListView(Context context, @Nullable AttributeSet attrs) {
+    public AddMemberListView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MemberListView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public AddMemberListView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MemberListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public AddMemberListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
 
     private void init(Context context) {
-        inflate(context, R.layout.layout_member, this);
+        inflate(context, R.layout.layout_add_member, this);
         ButterKnife.bind(this);
     }
 

@@ -8,6 +8,7 @@ import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseActivity;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview.MemberRVAdapter;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
 import java.util.List;
@@ -18,14 +19,17 @@ import static com.gigamole.navigationtabstrip.NavigationTabStrip.*;
 
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
-    @BindView(R.id.custom_layout)
-    MemberListView memberListView;
-
     @BindView(R.id.mainTabBar)
     NavigationTabStrip mainTabBar;
 
+    @BindView(R.id.add_member_layout)
+    AddMemberListView addMemberView;
+
     @BindView(R.id.memberRecyclerView)
     RecyclerView memberRecyclerView;
+
+    @BindView(R.id.noticeView)
+    NoticeView noticeView;
 
     private MemberRVAdapter memberRVAdapter;
     private MainInterface.Presenter mainPresenter;
@@ -59,10 +63,10 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     }
 
     private void initButtons() {
-        memberListView.setOnClickButtonListener(v -> {
+        addMemberView.setOnClickButtonListener(v -> {
             switch (v.getId()) {
                 case R.id.memberAddButton:
-                    mainPresenter.onClickAddMemberButton(mainTabBar.getTabIndex(), memberListView.getNameText(), memberListView.getPhoneNumText());
+                    mainPresenter.onClickAddMemberButton(mainTabBar.getTabIndex(), addMemberView.getNameText(), addMemberView.getPhoneNumText());
                     break;
             }
         });
@@ -95,8 +99,8 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     @Override
     public void clearTextView() {
-        memberListView.nameText.setText("");
-        memberListView.phoneNumText.setText("");
+        addMemberView.nameText.setText("");
+        addMemberView.phoneNumText.setText("");
     }
 
     @Override

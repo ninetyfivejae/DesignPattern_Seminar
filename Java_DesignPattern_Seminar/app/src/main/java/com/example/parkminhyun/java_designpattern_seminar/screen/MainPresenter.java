@@ -43,6 +43,7 @@ public class MainPresenter implements MainInterface.Presenter {
         hideKeyBoard();
         MemberVO user = new MemberVO(name, phoneNum);
 
+        memberVOList.add(user);
         String id = memberDataReference.push().getKey();
         memberDataReference.child(String.valueOf(index + 16) + "th").child(id).setValue(user);
 
