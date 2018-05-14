@@ -6,11 +6,10 @@ import android.text.Editable;
  * Created by ParkMinHyun on 2018-05-13.
  */
 
-public interface MainPageInterface {
+public interface MainInterface {
 
 
     interface View {
-        void updateBottomMenuButton();
     }
 
     interface Presenter {
