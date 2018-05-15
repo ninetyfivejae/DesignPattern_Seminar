@@ -1,5 +1,8 @@
 package com.example.parkminhyun.java_designpattern_seminar.screen;
 
+import android.widget.Toast;
+
+import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 
 /**
@@ -7,9 +10,12 @@ import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
  */
 
 class ScreenFormat1 implements UserInfoScreenInterface {
+
+    private MemberVO user;
+
     @Override
     public void show() {
-
+        Toast.makeText(App.getInstance(),user.getName() + "\n" + user.getPhoneNum(),Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -27,6 +33,6 @@ class ScreenFormat1 implements UserInfoScreenInterface {
 
     @Override
     public void setContent(MemberVO memberVO) {
-
+        this.user = memberVO;
     }
 }

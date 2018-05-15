@@ -64,8 +64,8 @@ public class MainPresenter implements MainInterface.Presenter {
 
     @Override
     public void onClickUserInfoButton(MemberVO user) {
-        userInfoScreen.setScreenContent(user);
         userInfoScreen.setScreen(user.getIndex());
+        userInfoScreen.setScreenContent(user);
         userInfoScreen.show();
     }
 

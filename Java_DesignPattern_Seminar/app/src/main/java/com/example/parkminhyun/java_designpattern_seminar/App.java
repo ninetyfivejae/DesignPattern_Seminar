@@ -16,6 +16,7 @@ public class App extends Application {
 
     private static App instance;
 
+    private static Activity currentActivity;
     private static FirebaseDatabase firebaseDatabase;
     private static final String APP_NAME = "DesignPattern_Seminar";
 
@@ -60,7 +61,11 @@ public class App extends Application {
     }
 
     public static Activity getCurrentActivity() {
-        return getCurrentActivity();
+        return currentActivity;
+    }
+
+    public static void setCurrentActivity(Activity activity){
+        currentActivity = activity;
     }
 
     public static FirebaseDatabase getFirebaseDatabase() {
@@ -71,7 +76,4 @@ public class App extends Application {
         InputMethodManager imm = (InputMethodManager) App.getInstance().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
-//    public static Realm getRealmInstance() {
-//        return Realm.getDefaultInstance();
-//    }
 }

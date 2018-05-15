@@ -29,6 +29,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        getViews();
+    }
+
+    @Override
     public void finish() {
         super.finish();
         initFinishAnimation();
