@@ -2,6 +2,7 @@ package com.example.parkminhyun.java_designpattern_seminar.common.base;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +63,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void startActivity(Class<?> cls) {
         Intent intent = new Intent(this, cls);
+        startActivity(intent);
+    }
+
+    protected void startActivity(String phoneNum){
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNum));
         startActivity(intent);
     }
 

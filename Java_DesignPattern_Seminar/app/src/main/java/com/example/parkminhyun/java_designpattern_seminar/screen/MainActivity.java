@@ -1,5 +1,6 @@
 package com.example.parkminhyun.java_designpattern_seminar.screen;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseActivity;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview.MemberItemClickListener;
 import com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview.MemberRVAdapter;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
@@ -15,7 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static com.gigamole.navigationtabstrip.NavigationTabStrip.*;
+import static com.gigamole.navigationtabstrip.NavigationTabStrip.OnTabStripSelectedIndexListener;
 
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
@@ -36,11 +38,11 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     @Override
     protected void init() {
-        initTabBar();
-        initButtons();
-        initRecyclerView();
-
         mainPresenter.init();
+
+        initRecyclerView();
+        initListener();
+        initTabBar();
     }
 
     private void initTabBar() {
@@ -58,11 +60,12 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     private void initRecyclerView() {
         memberRecyclerView.setLayoutManager(new LinearLayoutManager(App.getInstance()));
-        memberRVAdapter = new MemberRVAdapter(mainPresenter.getCurrentMemberList());
+        memberRVAdapter = new MemberRVAdapter(mainPresenter.getMemberList());
         memberRecyclerView.setAdapter(memberRVAdapter);
     }
 
-    private void initButtons() {
+    @SuppressLint("MissingPermission")
+    private void initListener() {
         addMemberView.setOnClickButtonListener(v -> {
             switch (v.getId()) {
                 case R.id.memberAddButton:
@@ -70,17 +73,31 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
                     break;
             }
         });
+
+        memberRVAdapter.setOnClickItemListener(new MemberItemClickListener() {
+            @Override
+            public void onClickPhoneCall(String phoneNum) {
+                startActivity(phoneNum);
+            }
+
+            @Override
+            public void onClickUserInfo() {
+                mainPresenter.onClickUserInfoButton();
+            }
+        });
     }
 
-//
-//    @OnClick({R.id.memberAddButton})
-//    public void onClick(View view) {
-//        int id = view.getId();
-//        if (id == R.id.memberAddButton) {
-//            mainPresenter.onClickAddMemberButton(mainTabBar.getTabIndex(), nameText.getText().toString(), phoneNumText.getText().toString());
-//        }
-//
-//    }
+    @Override
+    public void clearTextView() {
+        addMemberView.nameText.setText("");
+        addMemberView.phoneNumText.setText("");
+    }
+
+    @Override
+    public void updateMemberRecyclerView(List<MemberVO> memberVOList) {
+        memberRVAdapter.setMemberVOList(memberVOList);
+        memberRVAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void createPresenter() {
@@ -97,15 +114,4 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
         return R.layout.activity_main;
     }
 
-    @Override
-    public void clearTextView() {
-        addMemberView.nameText.setText("");
-        addMemberView.phoneNumText.setText("");
-    }
-
-    @Override
-    public void updateMemberRecyclerView(List<MemberVO> memberVOList) {
-        memberRVAdapter.setMemberVOList(memberVOList);
-        memberRVAdapter.notifyDataSetChanged();
-    }
 }

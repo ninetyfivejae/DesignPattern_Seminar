@@ -16,7 +16,8 @@ import java.util.List;
 
 public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
 
-    List<MemberVO> memberVOList;
+    private List<MemberVO> memberVOList;
+    private MemberItemClickListener memberItemClickListener;
 
     public MemberRVAdapter(List<MemberVO> memberVOList) {
         this.memberVOList = memberVOList;
@@ -25,7 +26,7 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
     @Override
     public MemberHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_item, parent, false);
-        MemberHolder holder = new MemberHolder(view);
+        MemberHolder holder = new MemberHolder(view, memberItemClickListener);
         return holder;
     }
 
@@ -41,5 +42,9 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
 
     public void setMemberVOList(List<MemberVO> memberVOList) {
         this.memberVOList = memberVOList;
+    }
+
+    public void setOnClickItemListener(MemberItemClickListener memberItemClickListener) {
+        this.memberItemClickListener = memberItemClickListener;
     }
 }

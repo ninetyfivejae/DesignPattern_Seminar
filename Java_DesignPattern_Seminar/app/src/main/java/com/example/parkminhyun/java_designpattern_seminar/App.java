@@ -3,6 +3,7 @@ package com.example.parkminhyun.java_designpattern_seminar;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -66,6 +67,10 @@ public class App extends Application {
         return firebaseDatabase;
     }
 
+    public static void hideKeyBoard() {
+        InputMethodManager imm = (InputMethodManager) App.getInstance().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+    }
 //    public static Realm getRealmInstance() {
 //        return Realm.getDefaultInstance();
 //    }
