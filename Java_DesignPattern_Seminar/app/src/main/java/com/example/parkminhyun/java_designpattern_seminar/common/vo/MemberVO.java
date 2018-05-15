@@ -6,14 +6,24 @@ package com.example.parkminhyun.java_designpattern_seminar.common.vo;
 
 public class MemberVO {
 
+    int index;
     String name;
     String phoneNum;
 
     public MemberVO() {}
 
-    public MemberVO(String name, String phoneNum) {
+    public MemberVO(int index, String name, String phoneNum) {
+        this.index = index;
         this.name = name;
         this.phoneNum = phoneNum;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public String getName() {

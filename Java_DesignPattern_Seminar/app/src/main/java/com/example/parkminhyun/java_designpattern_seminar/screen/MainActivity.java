@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_MEMBER_NUMBER;
 import static com.gigamole.navigationtabstrip.NavigationTabStrip.OnTabStripSelectedIndexListener;
 
 public class MainActivity extends BaseActivity implements MainInterface.View {
@@ -50,7 +51,7 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
         mainTabBar.setOnTabStripSelectedIndexListener(new OnTabStripSelectedIndexListener() {
             @Override
             public void onStartTabSelected(String title, int index) {
-                mainPresenter.setMemberList(index);
+                mainPresenter.setMemberList(String.valueOf(index + DEFAULT_MEMBER_NUMBER));
             }
 
             @Override
@@ -81,8 +82,8 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
             }
 
             @Override
-            public void onClickUserInfo() {
-                mainPresenter.onClickUserInfoButton();
+            public void onClickUserInfo(MemberVO user) {
+                mainPresenter.onClickUserInfoButton(user);
             }
         });
     }

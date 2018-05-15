@@ -22,9 +22,9 @@ public interface MainInterface {
 
         void onClickAddMemberButton(int number, String name, String phoneNum);
 
-        void onClickUserInfoButton();
+        void onClickUserInfoButton(MemberVO user);
 
-        void setMemberList(int index);
+        void setMemberList(String index);
 
         List<MemberVO> getMemberList();
     }

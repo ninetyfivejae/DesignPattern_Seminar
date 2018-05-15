@@ -11,15 +11,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_MEMBER_NUMBER;
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.MEMBER;
+
 /**
  * Created by ParkMinHyun on 2018-05-13.
  */
 
 public class MainPresenter implements MainInterface.Presenter {
 
-    private List<MemberVO> memberVOList = new ArrayList<>();
     private MainInterface.View mainView;
+
+    private List<MemberVO> memberVOList;
     private DatabaseReference memberDataReference;
+
+    private UserInfoScreen userInfoScreen;
 
     public MainPresenter(MainInterface.View mainPageView) {
         this.mainView = mainPageView;
@@ -27,36 +33,48 @@ public class MainPresenter implements MainInterface.Presenter {
 
     @Override
     public void init() {
+        initObject();
         initMemberData();
+    }
+
+    private void initObject() {
+        userInfoScreen = new UserInfoScreen();
+        memberVOList = new ArrayList<>();
     }
 
     private void initMemberData() {
         memberDataReference = App.getFirebaseDatabase().getReference();
-        setMemberList(0);
+        setMemberList(String.valueOf(DEFAULT_MEMBER_NUMBER));
     }
 
     @Override
     public void onClickAddMemberButton(int index, String name, String phoneNum) {
         App.hideKeyBoard();
 
-        MemberVO user = new MemberVO(name, phoneNum);
+        MemberVO user = new MemberVO(index, name, phoneNum);
         memberVOList.add(user);
 
         String id = memberDataReference.push().getKey();
-        memberDataReference.child(String.valueOf(index + 16) + "th").child(id).setValue(user);
+        String memberNumber = String.valueOf(index + DEFAULT_MEMBER_NUMBER);
+        memberDataReference.child(MEMBER).child(memberNumber).child(id).setValue(user);
 
         mainView.clearTextView();
         mainView.updateMemberRecyclerView(memberVOList);
     }
 
     @Override
-    public void onClickUserInfoButton() {
-
+    public void onClickUserInfoButton(MemberVO user) {
+        userInfoScreen.setScreenContent(user);
+        userInfoScreen.setScreen(user.getIndex());
+        userInfoScreen.show();
     }
 
     @Override
-    public void setMemberList(int index) {
-        Query query = memberDataReference.child(String.valueOf(index + 16) + "th");
+    public void setMemberList(String index) {
+        Query query = memberDataReference
+                .child(MEMBER)
+                .child(String.valueOf(index));
+
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

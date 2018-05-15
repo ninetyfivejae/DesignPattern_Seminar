@@ -50,7 +50,7 @@ public class MemberHolder extends RecyclerView.ViewHolder {
         if (id == R.id.memberCall) {
             memberItemClickListener.onClickPhoneCall(user.getPhoneNum());
         } else if (id == R.id.memberInfo) {
-            memberItemClickListener.onClickUserInfo();
+            memberItemClickListener.onClickUserInfo(user);
         }
     }
 }
