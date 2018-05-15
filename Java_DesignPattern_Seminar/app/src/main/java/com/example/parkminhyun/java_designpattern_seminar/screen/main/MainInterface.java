@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 
@@ -10,9 +10,10 @@ import java.util.List;
 
 public interface MainInterface {
 
-
     interface View {
         void clearTextView();
+
+        void updateMemberToViews(MemberVO user);
 
         void updateMemberRecyclerView(List<MemberVO> memberVOList);
     }
@@ -28,6 +29,5 @@ public interface MainInterface {
 
         List<MemberVO> getMemberList();
     }
-
 
 }

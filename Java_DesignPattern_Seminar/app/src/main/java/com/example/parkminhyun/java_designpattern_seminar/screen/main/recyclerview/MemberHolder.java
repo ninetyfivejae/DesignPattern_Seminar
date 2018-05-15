@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

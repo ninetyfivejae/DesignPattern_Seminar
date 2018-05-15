@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 
 import android.annotation.SuppressLint;
 import android.app.DialogFragment;

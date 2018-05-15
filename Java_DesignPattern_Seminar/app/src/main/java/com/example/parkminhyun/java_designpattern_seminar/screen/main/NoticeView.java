@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -6,16 +6,24 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.parkminhyun.java_designpattern_seminar.R;
+import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.observer.MemberStatusData;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.observer.MemberStatusObserver;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * Created by ParkMinHyun on 2018-05-15.
  */
 
-public class NoticeView extends LinearLayout {
+public class NoticeView extends LinearLayout implements MemberStatusObserver {
+
+    @BindView(R.id.noticeTextView)
+    TextView noticeTextView;
 
     public NoticeView(Context context) {
         this(context, null);
@@ -41,4 +49,17 @@ public class NoticeView extends LinearLayout {
         ButterKnife.bind(this);
     }
 
+    public void setMemberStatusObserver(MemberStatusData observable) {
+        observable.addObserver(this);
+    }
+
+    @Override
+    public void addMember(MemberVO user) {
+        noticeTextView.setText(user.getName() + "님이 추가되었습니다!");
+    }
+
+    @Override
+    public void deleteMember(MemberVO user) {
+
+    }
 }

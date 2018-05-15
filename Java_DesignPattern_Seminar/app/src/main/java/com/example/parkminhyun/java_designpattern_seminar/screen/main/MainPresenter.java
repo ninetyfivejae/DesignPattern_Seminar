@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
@@ -11,7 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_MEMBER_NUMBER;
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_GROUP_NUMBER;
 import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.MEMBER;
 
 /**
@@ -44,7 +44,7 @@ public class MainPresenter implements MainInterface.Presenter {
 
     private void initMemberData() {
         memberDataReference = App.getFirebaseDatabase().getReference();
-        setMemberList(String.valueOf(DEFAULT_MEMBER_NUMBER));
+        setMemberList(String.valueOf(DEFAULT_GROUP_NUMBER));
     }
 
     @Override
@@ -55,8 +55,8 @@ public class MainPresenter implements MainInterface.Presenter {
         memberVOList.add(user);
 
         String id = memberDataReference.push().getKey();
-        String memberNumber = String.valueOf(index + DEFAULT_MEMBER_NUMBER);
-        memberDataReference.child(MEMBER).child(memberNumber).child(id).setValue(user);
+        String groupIndex = String.valueOf(index + DEFAULT_GROUP_NUMBER);
+        memberDataReference.child(MEMBER).child(groupIndex).child(id).setValue(user);
 
         mainView.clearTextView();
         mainView.updateMemberRecyclerView(memberVOList);
@@ -64,7 +64,7 @@ public class MainPresenter implements MainInterface.Presenter {
 
     @Override
     public void onClickUserInfoButton(MemberVO user) {
-        userInfoScreen.setScreen(user.getIndex());
+        userInfoScreen.setScreen(user.getGroup());
         userInfoScreen.setScreenContent(user);
         userInfoScreen.show();
     }
@@ -89,7 +89,8 @@ public class MainPresenter implements MainInterface.Presenter {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
     }
 

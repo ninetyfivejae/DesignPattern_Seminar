@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main.observer;
 
 /**
  * Created by ParkMinHyun on 2018-05-15.

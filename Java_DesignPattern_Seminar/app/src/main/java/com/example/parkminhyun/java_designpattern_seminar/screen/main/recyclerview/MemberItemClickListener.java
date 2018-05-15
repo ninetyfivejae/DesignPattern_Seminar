@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main.recyclerview;
 
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 

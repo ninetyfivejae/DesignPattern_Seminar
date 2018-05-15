@@ -1,8 +1,6 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main.observer;
 
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
-import com.example.parkminhyun.java_designpattern_seminar.screen.MemberStatusObservable;
-import com.example.parkminhyun.java_designpattern_seminar.screen.MemberStatusObserver;
 
 import java.util.ArrayList;
 import java.util.List;

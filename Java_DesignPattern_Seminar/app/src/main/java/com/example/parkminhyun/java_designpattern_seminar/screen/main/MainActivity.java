@@ -1,6 +1,5 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,17 +7,19 @@ import android.support.v7.widget.RecyclerView;
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseActivity;
+import com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
-import com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview.MemberItemClickListener;
-import com.example.parkminhyun.java_designpattern_seminar.screen.recyclerview.MemberRVAdapter;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.observer.MemberStatusData;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.recyclerview.MemberItemClickListener;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.recyclerview.MemberRVAdapter;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
+import com.gigamole.navigationtabstrip.NavigationTabStrip.OnTabStripSelectedIndexListener;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_MEMBER_NUMBER;
-import static com.gigamole.navigationtabstrip.NavigationTabStrip.OnTabStripSelectedIndexListener;
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_GROUP_NUMBER;
 
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
@@ -35,28 +36,25 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     NoticeView noticeView;
 
     private MemberRVAdapter memberRVAdapter;
+    private MemberStatusData memberStatusData;
     private MainInterface.Presenter mainPresenter;
 
     @Override
     protected void init() {
         mainPresenter.init();
 
-        initRecyclerView();
+        initView();
         initListener();
+        initObserver();
+    }
+
+    private void initView() {
         initTabBar();
+        initRecyclerView();
     }
 
     private void initTabBar() {
         mainTabBar.setTabIndex(0, true);
-        mainTabBar.setOnTabStripSelectedIndexListener(new OnTabStripSelectedIndexListener() {
-            @Override
-            public void onStartTabSelected(String title, int index) {
-                mainPresenter.setMemberList(String.valueOf(index + DEFAULT_MEMBER_NUMBER));
-            }
-
-            @Override
-            public void onEndTabSelected(String title, int index) {}
-        });
     }
 
     private void initRecyclerView() {
@@ -65,7 +63,6 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
         memberRecyclerView.setAdapter(memberRVAdapter);
     }
 
-    @SuppressLint("MissingPermission")
     private void initListener() {
         addMemberView.setOnClickButtonListener(v -> {
             switch (v.getId()) {
@@ -86,12 +83,32 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
                 mainPresenter.onClickUserInfoButton(user);
             }
         });
+
+        mainTabBar.setOnTabStripSelectedIndexListener(new OnTabStripSelectedIndexListener() {
+            @Override
+            public void onStartTabSelected(String title, int index) {
+                mainPresenter.setMemberList(String.valueOf(index + DEFAULT_GROUP_NUMBER));
+            }
+
+            @Override
+            public void onEndTabSelected(String title, int index) {}
+        });
+    }
+
+    private void initObserver() {
+        memberStatusData = new MemberStatusData();
+        noticeView.setMemberStatusObserver(memberStatusData);
     }
 
     @Override
     public void clearTextView() {
         addMemberView.nameText.setText("");
         addMemberView.phoneNumText.setText("");
+    }
+
+    @Override
+    public void updateMemberToViews(MemberVO user) {
+        memberStatusData.setMember(user, MemberConstant.ADD_MEMBER);
     }
 
     @Override

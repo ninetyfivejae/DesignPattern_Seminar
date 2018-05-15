@@ -8,7 +8,7 @@
     android:background="@color/bg_dark"
     android:focusableInTouchMode="false"
     android:orientation="vertical"
-    tools:context="com.example.parkminhyun.java_designpattern_seminar.screen.MainActivity">
+    tools:context="com.example.parkminhyun.java_designpattern_seminar.screen.main.MainActivity">
 
     <FrameLayout
         android:id="@+id/tabLayout"
@@ -45,7 +45,7 @@
 
     </FrameLayout>
 
-    <com.example.parkminhyun.java_designpattern_seminar.screen.AddMemberListView
+    <com.example.parkminhyun.java_designpattern_seminar.screen.main.AddMemberListView
         android:id="@+id/add_member_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         android:layout_above="@+id/noticeView"
         android:layout_below="@id/add_member_layout" />
 
-    <com.example.parkminhyun.java_designpattern_seminar.screen.NoticeView
+    <com.example.parkminhyun.java_designpattern_seminar.screen.main.NoticeView
         android:id="@+id/noticeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

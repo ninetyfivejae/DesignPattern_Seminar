@@ -1,4 +1,4 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen;
+package com.example.parkminhyun.java_designpattern_seminar.screen.main.observer;
 
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 
