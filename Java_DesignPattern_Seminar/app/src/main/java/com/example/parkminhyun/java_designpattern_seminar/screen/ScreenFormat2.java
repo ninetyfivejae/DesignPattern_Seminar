@@ -27,9 +27,7 @@ class ScreenFormat2 implements UserInfoScreenInterface {
     }
 
     @Override
-    public void update() {
-
-    }
+    public void update() {}
 
     @Override
     public void setContent(MemberVO memberVO) {

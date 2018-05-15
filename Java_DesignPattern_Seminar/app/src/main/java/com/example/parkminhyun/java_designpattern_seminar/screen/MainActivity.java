@@ -107,7 +107,6 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     @Override
     protected Activity getViews() {
-        App.setCurrentActivity(this);
         return this;
     }
 

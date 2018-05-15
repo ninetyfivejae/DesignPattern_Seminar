@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.enums.AnimationDirection;
 
 import butterknife.ButterKnife;
@@ -31,8 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        getViews();
+        setTopActivity();
     }
 
     @Override
@@ -43,9 +43,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initActivity() {
         setContentView(getLayout());
+
         ButterKnife.bind(getViews());
+        setTopActivity();
 
         init();
+    }
+
+    private void setTopActivity() {
+        App.setCurrentActivity(getViews());
     }
 
     /**

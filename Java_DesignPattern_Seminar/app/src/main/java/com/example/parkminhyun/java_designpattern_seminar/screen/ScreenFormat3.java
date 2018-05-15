@@ -9,17 +9,18 @@ import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 
 class ScreenFormat3 implements UserInfoScreenInterface {
 
+    private InfoDialogFragment infoDialogFragment;
     private MemberVO user;
 
     @Override
     public void show() {
-        InfoDialogFragment infoDialogFragment = new InfoDialogFragment(user);
+        infoDialogFragment = new InfoDialogFragment(user);
         infoDialogFragment.show(App.getCurrentActivity().getFragmentManager(),"InfoDialogFragment");
     }
 
     @Override
     public boolean isShowing() {
-        return false;
+        return infoDialogFragment.getDialog() != null && infoDialogFragment.getDialog().isShowing();
     }
 
     @Override

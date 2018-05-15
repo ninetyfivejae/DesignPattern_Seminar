@@ -15,11 +15,12 @@ public class UserInfoScreen {
     private UserInfoScreenInterface userInfoScreenInterface;
 
     public void show(){
-        if(!userInfoScreenInterface.isShowing()) {
-            userInfoScreenInterface.show();
-        }
+        userInfoScreenInterface.show();
     }
 
+    public boolean isShowing(){
+        return userInfoScreenInterface.isShowing();
+    }
     public void update(){
         userInfoScreenInterface.update();
     }
