@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.ADD_MEMBER;
 import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_GROUP_NUMBER;
 import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.MEMBER;
 
@@ -52,14 +53,13 @@ public class MainPresenter implements MainInterface.Presenter {
         App.hideKeyBoard();
 
         MemberVO user = new MemberVO(index, name, phoneNum);
-        memberVOList.add(user);
 
         String id = memberDataReference.push().getKey();
         String groupIndex = String.valueOf(index + DEFAULT_GROUP_NUMBER);
         memberDataReference.child(MEMBER).child(groupIndex).child(id).setValue(user);
 
         mainView.clearTextView();
-        mainView.updateMemberRecyclerView(memberVOList);
+        mainView.updateMemberToViews(user, ADD_MEMBER);
     }
 
     @Override
@@ -90,6 +90,7 @@ public class MainPresenter implements MainInterface.Presenter {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

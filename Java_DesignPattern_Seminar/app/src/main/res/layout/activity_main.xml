@@ -5,7 +5,6 @@
     android:id="@+id/mainLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
     android:focusableInTouchMode="false"
     android:orientation="vertical"
     tools:context="com.example.parkminhyun.java_designpattern_seminar.screen.main.MainActivity">
@@ -52,16 +51,25 @@
         android:layout_below="@id/tabLayout"
         android:paddingRight="8dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/memberRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/noticeView"
-        android:layout_below="@id/add_member_layout" />
-
     <com.example.parkminhyun.java_designpattern_seminar.screen.main.NoticeView
         android:id="@+id/noticeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_below="@id/add_member_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/memberRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noticeView" />
+
+    <com.example.parkminhyun.java_designpattern_seminar.screen.main.SnackBarView
+        android:id="@+id/snackBarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible" />
+
 </RelativeLayout>

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.observer.MemberStatusData;
+import com.example.parkminhyun.java_designpattern_seminar.screen.main.observer.MemberStatusObserver;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * Created by ParkMinHyun on 2018-05-14.
  */
 
-public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
+public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder> implements MemberStatusObserver {
 
     private List<MemberVO> memberVOList;
     private MemberItemClickListener memberItemClickListener;
@@ -40,6 +42,18 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
         return memberVOList.size();
     }
 
+    @Override
+    public void addMember(MemberVO user) {
+        int addIndex = getItemCount();
+
+        memberVOList.add(user);
+        notifyItemInserted(addIndex);
+    }
+
+    @Override
+    public void deleteMember(MemberVO user) {
+    }
+
     public void setMemberVOList(List<MemberVO> memberVOList) {
         this.memberVOList = memberVOList;
     }
@@ -47,4 +61,9 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder>{
     public void setOnClickItemListener(MemberItemClickListener memberItemClickListener) {
         this.memberItemClickListener = memberItemClickListener;
     }
+
+    public void setMemberStatusObserver(MemberStatusData observable) {
+        observable.addObserver(this);
+    }
+
 }

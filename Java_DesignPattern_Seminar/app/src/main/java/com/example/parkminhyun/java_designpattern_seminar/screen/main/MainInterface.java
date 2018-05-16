@@ -13,7 +13,7 @@ public interface MainInterface {
     interface View {
         void clearTextView();
 
-        void updateMemberToViews(MemberVO user);
+        void updateMemberToViews(MemberVO user, int mode);
 
         void updateMemberRecyclerView(List<MemberVO> memberVOList);
     }

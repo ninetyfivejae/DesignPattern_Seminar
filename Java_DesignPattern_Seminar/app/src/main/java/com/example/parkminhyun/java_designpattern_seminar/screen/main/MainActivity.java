@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.R;
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseActivity;
-import com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 import com.example.parkminhyun.java_designpattern_seminar.screen.main.observer.MemberStatusData;
 import com.example.parkminhyun.java_designpattern_seminar.screen.main.recyclerview.MemberItemClickListener;
@@ -91,24 +90,27 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
             }
 
             @Override
-            public void onEndTabSelected(String title, int index) {}
+            public void onEndTabSelected(String title, int index) {
+            }
         });
     }
 
     private void initObserver() {
         memberStatusData = new MemberStatusData();
         noticeView.setMemberStatusObserver(memberStatusData);
+        memberRVAdapter.setMemberStatusObserver(memberStatusData);
     }
 
     @Override
     public void clearTextView() {
         addMemberView.nameText.setText("");
         addMemberView.phoneNumText.setText("");
+        addMemberView.phoneNumText.clearFocus();
     }
 
     @Override
-    public void updateMemberToViews(MemberVO user) {
-        memberStatusData.setMember(user, MemberConstant.ADD_MEMBER);
+    public void updateMemberToViews(MemberVO user, int mode) {
+        memberStatusData.setMember(user, mode);
     }
 
     @Override

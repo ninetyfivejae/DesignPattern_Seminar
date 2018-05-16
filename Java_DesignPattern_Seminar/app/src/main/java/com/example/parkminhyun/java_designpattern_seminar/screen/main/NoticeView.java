@@ -49,10 +49,6 @@ public class NoticeView extends LinearLayout implements MemberStatusObserver {
         ButterKnife.bind(this);
     }
 
-    public void setMemberStatusObserver(MemberStatusData observable) {
-        observable.addObserver(this);
-    }
-
     @Override
     public void addMember(MemberVO user) {
         noticeTextView.setText(user.getName() + "님이 추가되었습니다!");
@@ -61,5 +57,9 @@ public class NoticeView extends LinearLayout implements MemberStatusObserver {
     @Override
     public void deleteMember(MemberVO user) {
 
+    }
+
+    public void setMemberStatusObserver(MemberStatusData observable) {
+        observable.addObserver(this);
     }
 }
