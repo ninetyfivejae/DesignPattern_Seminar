@@ -2,6 +2,7 @@ package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.java_designpattern_seminar.db.core.SingleResponse;
 import com.example.parkminhyun.java_designpattern_seminar.db.provider.MemberModelProvider;
 
 import java.util.ArrayList;
@@ -62,8 +63,14 @@ public class MainPresenter implements MainInterface.Presenter {
     }
 
     @Override
-    public void setMemberList(String index) {
-        memberModelProvider.getMemberList(index, memberList -> mainView.updateMemberRecyclerView((List<MemberVO>) memberList));
+    public void setMemberList(String tabIndex) {
+        memberModelProvider.getMemberList(tabIndex, new SingleResponse<List<MemberVO>>() {
+            @Override
+            public void onResponse(List<MemberVO> result) {
+                memberVOList = result;
+                mainView.updateMemberRecyclerView(memberVOList);
+            }
+        });
     }
 
     @Override

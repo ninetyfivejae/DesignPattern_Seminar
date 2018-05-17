@@ -20,9 +20,8 @@ import static com.example.parkminhyun.java_designpattern_seminar.common.constant
 
 public class MemberFirebaseDAO extends BaseFirebaseDAO {
 
-    public void getMemberList(String index, SingleResponse singleResponse) {
-        query(databaseReference -> {
-
+    public void requestMemberList(String index, SingleResponse singleResponse) {
+        queryRequest(databaseReference -> {
             List<MemberVO> memberList = new ArrayList<>();
             Query getMemberQuery = databaseReference.child(MEMBER).child(index);
 
@@ -37,7 +36,6 @@ public class MemberFirebaseDAO extends BaseFirebaseDAO {
                     }
                     singleResponse.onResponse(memberList);
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {}
             });

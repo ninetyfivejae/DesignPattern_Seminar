@@ -17,12 +17,10 @@ public class MemberModelProvider {
     }
 
     public void getMemberList(String index, SingleResponse singleResponse) {
-        memberFirebaseDAO.getMemberList(index, singleResponse);
+        memberFirebaseDAO.requestMemberList(index, singleResponse);
     }
 
     public void addMember(MemberVO user, int index) {
         memberFirebaseDAO.addMember(user, index);
     }
-
-    public void execute(){}
 }

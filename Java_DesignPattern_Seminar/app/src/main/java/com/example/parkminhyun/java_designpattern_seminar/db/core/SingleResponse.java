@@ -4,6 +4,6 @@ package com.example.parkminhyun.java_designpattern_seminar.db.core;
  * Created by ParkMinHyun on 2018-05-17.
  */
 
-public interface SingleResponse<L> {
-    void onResponse(L memberList);
+public interface SingleResponse<T> {
+    void onResponse(T result);
 }
