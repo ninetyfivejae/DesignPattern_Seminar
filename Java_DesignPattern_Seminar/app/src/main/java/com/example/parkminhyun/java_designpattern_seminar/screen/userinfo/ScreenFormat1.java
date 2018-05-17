@@ -1,10 +1,9 @@
-package com.example.parkminhyun.java_designpattern_seminar.screen.main;
+package com.example.parkminhyun.java_designpattern_seminar.screen.userinfo;
 
 import android.widget.Toast;
 
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
-import com.example.parkminhyun.java_designpattern_seminar.screen.main.UserInfoScreenInterface;
 
 /**
  * Created by ParkMinHyun on 2018-05-15.

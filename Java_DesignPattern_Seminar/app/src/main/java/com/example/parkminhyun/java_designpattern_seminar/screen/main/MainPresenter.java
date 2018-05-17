@@ -4,6 +4,7 @@ import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 import com.example.parkminhyun.java_designpattern_seminar.db.core.SingleResponse;
 import com.example.parkminhyun.java_designpattern_seminar.db.provider.MemberModelProvider;
+import com.example.parkminhyun.java_designpattern_seminar.screen.userinfo.UserInfoScreen;
 
 import java.util.ArrayList;
 import java.util.List;
