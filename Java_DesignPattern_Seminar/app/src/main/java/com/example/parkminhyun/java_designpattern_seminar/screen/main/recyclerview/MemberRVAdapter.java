@@ -44,10 +44,10 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder> implemen
 
     @Override
     public void addMember(MemberVO user) {
-        int addIndex = getItemCount();
+        int addedIndex = getItemCount();
 
         memberVOList.add(user);
-        notifyItemInserted(addIndex);
+        notifyItemInserted(addedIndex);
     }
 
     @Override

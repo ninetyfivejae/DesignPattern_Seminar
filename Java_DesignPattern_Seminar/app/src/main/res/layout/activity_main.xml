@@ -65,11 +65,4 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/noticeView" />
 
-    <com.example.parkminhyun.java_designpattern_seminar.screen.main.SnackBarView
-        android:id="@+id/snackBarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:visibility="invisible" />
-
 </RelativeLayout>
