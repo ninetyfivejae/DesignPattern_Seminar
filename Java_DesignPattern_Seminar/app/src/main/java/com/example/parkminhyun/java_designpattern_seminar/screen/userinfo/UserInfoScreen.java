@@ -2,18 +2,21 @@ package com.example.parkminhyun.java_designpattern_seminar.screen.userinfo;
 
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.EIGHTEEN_TH;
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.SEVENTEEN_TH;
+import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.SIXTEEN_TH;
+
 /**
  * Created by ParkMinHyun on 2018-05-15.
  */
 
 public class UserInfoScreen {
 
-    private static final int SIXTEEN_TH = 0;
-    private static final int SEVENTEEN_TH = 1;
-    private static final int EIGHTEEN_TH = 2;
-
     private UserInfoScreenInterface userInfoScreenInterface;
 
+    /**
+     * 교체된 인스턴스에게 show() Method 동작시키기
+     */
     public void show(){
         userInfoScreenInterface.show();
     }
@@ -21,10 +24,15 @@ public class UserInfoScreen {
     public boolean isShowing(){
         return userInfoScreenInterface.isShowing();
     }
+
     public void update(){
         userInfoScreenInterface.update();
     }
 
+    /**
+     * 상황에 맞는 Screen Mode를 결정하기 위한 Method
+     * 인스턴스가 교체되는 식으로 동작
+     */
     public void setScreen(int index){
         switch (index){
             case SIXTEEN_TH:
@@ -39,6 +47,9 @@ public class UserInfoScreen {
         }
     }
 
+    /**
+     * content를 저장하는 Method
+     */
     public void setScreenContent(MemberVO memberVO){
         userInfoScreenInterface.setContent(memberVO);
     }

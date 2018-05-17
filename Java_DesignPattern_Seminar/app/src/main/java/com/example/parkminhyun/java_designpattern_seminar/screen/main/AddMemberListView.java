@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * Member를 등록하는 customView
  * Created by ParkMinHyun on 2018-05-14.
  */
 

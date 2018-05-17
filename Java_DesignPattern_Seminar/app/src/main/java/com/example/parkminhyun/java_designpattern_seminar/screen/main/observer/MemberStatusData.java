@@ -9,6 +9,7 @@ import static com.example.parkminhyun.java_designpattern_seminar.common.constant
 import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DELETE_MEMBER;
 
 /**
+ * 옵저버를 관리하는 클래스
  * Created by ParkMinHyun on 2018-05-15.
  */
 
@@ -34,6 +35,9 @@ public class MemberStatusData implements MemberStatusObservable {
         }
     }
 
+    /**
+     * 옵저버 전체 알림을 동작시키는 Method
+     */
     @Override
     public void notifyObserver(int mode) {
         for (MemberStatusObserver memberStatusObserver : memberStatusObservers) {
@@ -48,6 +52,9 @@ public class MemberStatusData implements MemberStatusObservable {
         }
     }
 
+    /**
+     * 옵저버에게 전달할 Data를 저장하고 저장한 내용을 옵저버에게 전달하기 위한 Method
+     */
     public void setMember(MemberVO memberVO, int mode) {
         this.user = memberVO;
         notifyObserver(mode);

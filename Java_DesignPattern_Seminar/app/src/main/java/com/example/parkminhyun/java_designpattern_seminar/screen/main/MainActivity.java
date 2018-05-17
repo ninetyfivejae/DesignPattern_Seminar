@@ -20,6 +20,11 @@ import butterknife.BindView;
 
 import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_GROUP_NUMBER;
 
+/**
+ * Main 화면의 view 초기화 및 view 변경을 담당하는 Class
+ * Created by ParkMinHyun on 2018-05-13.
+ */
+
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
     @BindView(R.id.mainTabBar)

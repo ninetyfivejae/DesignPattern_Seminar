@@ -5,6 +5,7 @@ import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 import java.util.List;
 
 /**
+ * main view, presenter 연결을 위한 interface
  * Created by ParkMinHyun on 2018-05-13.
  */
 

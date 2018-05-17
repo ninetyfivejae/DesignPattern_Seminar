@@ -15,11 +15,16 @@ import static com.example.parkminhyun.java_designpattern_seminar.common.constant
 import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.MEMBER;
 
 /**
+ * Data에 직접적으로 접근하는 Data Access Object Class
  * Created by ParkMinHyun on 2018-05-17.
  */
 
 public class MemberFirebaseDAO extends BaseFirebaseDAO {
 
+    /**
+     * Firebase Library 자체가 비동기식으로 동작하기 때문에
+     * 동일한 시점에 Data를 얻을 수 없어 queryRequest() Method 사용 --> 콜백으로 Data 전달
+     */
     public void requestMemberList(String index, SingleResponse singleResponse) {
         queryRequest(databaseReference -> {
             List<MemberVO> memberList = new ArrayList<>();

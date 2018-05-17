@@ -5,6 +5,7 @@ import com.example.parkminhyun.java_designpattern_seminar.db.core.SingleResponse
 import com.example.parkminhyun.java_designpattern_seminar.db.dao.MemberFirebaseDAO;
 
 /**
+ * 본체와 DAO 간 중간자 역할을 담당하는 Provider Class
  * Created by ParkMinHyun on 2018-05-17.
  */
 

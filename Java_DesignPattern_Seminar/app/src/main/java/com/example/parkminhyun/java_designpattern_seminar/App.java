@@ -5,10 +5,11 @@ import android.app.Application;
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
- * Library 초기화 및 context를 받기 위한 Class
+ * Library 초기화 및 공통된 App 정보를 받기 위한 Class
  * Created by ParkMinHyun on 2018-05-11.
  */
 
@@ -36,15 +37,10 @@ public class App extends Application {
     private void initLibraries() {
         initRealm();
         initFireBase();
-        initNaverLogin();
     }
 
     private void initFireBase() {
         firebaseDatabase = FirebaseDatabase.getInstance();
-    }
-
-    private void initNaverLogin() {
-//        LoginHelper.initNaverAuthInstance(instance);
     }
 
     private void initRealm() {
@@ -64,16 +60,12 @@ public class App extends Application {
         return currentActivity;
     }
 
-    public static void setCurrentActivity(Activity activity){
+    public static void setCurrentActivity(Activity activity) {
         currentActivity = activity;
     }
 
-    public static FirebaseDatabase getFirebaseDatabase() {
-        return firebaseDatabase;
+    public static DatabaseReference getFirebaseDataReference() {
+        return firebaseDatabase.getReference();
     }
 
-    public static void hideKeyBoard() {
-        InputMethodManager imm = (InputMethodManager) App.getInstance().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-    }
 }

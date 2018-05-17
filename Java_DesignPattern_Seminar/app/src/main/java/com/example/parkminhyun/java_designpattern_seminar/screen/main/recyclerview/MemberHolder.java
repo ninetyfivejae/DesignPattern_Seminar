@@ -39,11 +39,18 @@ public class MemberHolder extends RecyclerView.ViewHolder {
         this.memberItemClickListener = memberItemClickListener;
     }
 
+    /**
+     * RecyclerView에 변화가 생길 때 호출되는 Method.
+     * ex) 새로운 내용이 나타나거나, 삭제되거나, 변경되거나 등..
+     */
     public void bindView(List<MemberVO> memberVOList, int position) {
         user = memberVOList.get(position);
         nameView.setText(user.getName());
     }
 
+    /**
+     * Butterknife Library OnClick Method
+     */
     @OnClick({R.id.memberCall, R.id.memberInfo})
     public void onClick(View view) {
         int id = view.getId();
