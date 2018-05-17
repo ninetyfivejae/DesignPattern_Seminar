@@ -2,6 +2,7 @@ package com.example.parkminhyun.java_designpattern_seminar.db.dao;
 
 import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseFirebaseDAO;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.java_designpattern_seminar.db.core.SingleResponse;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
@@ -19,8 +20,8 @@ import static com.example.parkminhyun.java_designpattern_seminar.common.constant
 
 public class MemberFirebaseDAO extends BaseFirebaseDAO {
 
-    public List<MemberVO> getMemberList(String index) {
-        return query(databaseReference -> {
+    public void getMemberList(String index, SingleResponse singleResponse) {
+        query(databaseReference -> {
 
             List<MemberVO> memberList = new ArrayList<>();
             Query getMemberQuery = databaseReference.child(MEMBER).child(index);
@@ -34,14 +35,13 @@ public class MemberFirebaseDAO extends BaseFirebaseDAO {
                             memberList.add(memberVO);
                         }
                     }
+                    singleResponse.onResponse(memberList);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {}
             });
-            return memberList;
         });
-
     }
 
     public void addMember(MemberVO user, int index) {

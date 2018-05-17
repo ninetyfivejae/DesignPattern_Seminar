@@ -1,12 +1,8 @@
 package com.example.parkminhyun.java_designpattern_seminar.db.provider;
 
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
-
-import com.example.parkminhyun.java_designpattern_seminar.db.dao.MemberFirebaseDAO;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
-
-import java.util.List;
+import com.example.parkminhyun.java_designpattern_seminar.db.core.SingleResponse;
+import com.example.parkminhyun.java_designpattern_seminar.db.dao.MemberFirebaseDAO;
 
 /**
  * Created by ParkMinHyun on 2018-05-17.
@@ -20,17 +16,13 @@ public class MemberModelProvider {
         this.memberFirebaseDAO = new MemberFirebaseDAO();
     }
 
-    @NonNull
-    @CheckResult
-    public List<MemberVO> getMemberList(String index) {
-        return memberFirebaseDAO.getMemberList(index);
+    public void getMemberList(String index, SingleResponse singleResponse) {
+        memberFirebaseDAO.getMemberList(index, singleResponse);
     }
 
     public void addMember(MemberVO user, int index) {
         memberFirebaseDAO.addMember(user, index);
     }
 
-    public void setSingleObserver(){
-
-    }
+    public void execute(){}
 }

@@ -11,15 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 
 public class BaseFirebaseDAO {
 
-    protected <T> T query(FirebaseQueryTask<T> task){
+    protected void query(FirebaseQueryTask task){
         DatabaseReference memberDataReference = App.getFirebaseDatabase().getReference();
-        T result = null;
-        try {
-            result = task.queryResult(memberDataReference);
-        }catch (Exception e){
-
-        }
-        return result;
+        task.queryResult(memberDataReference);
     }
 
     protected void modify(FirebaseTransactionTask task){

@@ -3,7 +3,6 @@ package com.example.parkminhyun.java_designpattern_seminar.screen.main;
 import com.example.parkminhyun.java_designpattern_seminar.App;
 import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
 import com.example.parkminhyun.java_designpattern_seminar.db.provider.MemberModelProvider;
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,6 @@ public class MainPresenter implements MainInterface.Presenter {
     private MainInterface.View mainView;
 
     private List<MemberVO> memberVOList;
-    private DatabaseReference memberDataReference;
     private MemberModelProvider memberModelProvider;
 
     private UserInfoScreen userInfoScreen;
@@ -42,7 +40,6 @@ public class MainPresenter implements MainInterface.Presenter {
     }
 
     private void initMemberData() {
-        memberDataReference = App.getFirebaseDatabase().getReference();
         setMemberList(String.valueOf(DEFAULT_GROUP_NUMBER));
     }
 
@@ -66,10 +63,7 @@ public class MainPresenter implements MainInterface.Presenter {
 
     @Override
     public void setMemberList(String index) {
-        List<MemberVO> memberList = memberModelProvider.getMemberList(index);
-//        if (memberList.size() != 0) {
-//            mainView.updateMemberRecyclerView(memberList);
-//        }
+        memberModelProvider.getMemberList(index, memberList -> mainView.updateMemberRecyclerView((List<MemberVO>) memberList));
     }
 
     @Override
