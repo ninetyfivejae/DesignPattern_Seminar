@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "708486438524",
+    "firebase_url": "https://sample-95960.firebaseio.com",
+    "project_id": "sample-95960",
+    "storage_bucket": "sample-95960.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708486438524:android:40a43459eadd6d33",
+        "android_client_info": {
+          "package_name": "com.example.parkminhyun.practice_seminar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708486438524-3larg5rinst6gm975rj7dip15vbjj1gl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZI4GLmnpafs0OGACHySh_jjcWHQ4o1VM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708486438524-3larg5rinst6gm975rj7dip15vbjj1gl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

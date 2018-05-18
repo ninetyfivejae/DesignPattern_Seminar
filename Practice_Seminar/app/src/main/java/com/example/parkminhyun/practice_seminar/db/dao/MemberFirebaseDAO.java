@@ -1,8 +1,8 @@
-package com.example.parkminhyun.java_designpattern_seminar.db.dao;
+package com.example.parkminhyun.practice_seminar.db.dao;
 
-import com.example.parkminhyun.java_designpattern_seminar.common.base.BaseFirebaseDAO;
-import com.example.parkminhyun.java_designpattern_seminar.common.vo.MemberVO;
-import com.example.parkminhyun.java_designpattern_seminar.db.core.SingleResponse;
+import com.example.parkminhyun.practice_seminar.common.base.BaseFirebaseDAO;
+import com.example.parkminhyun.practice_seminar.common.vo.MemberVO;
+import com.example.parkminhyun.practice_seminar.db.core.SingleResponse;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
@@ -11,8 +11,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.DEFAULT_GROUP_NUMBER;
-import static com.example.parkminhyun.java_designpattern_seminar.common.constants.MemberConstant.MEMBER;
+import static com.example.parkminhyun.practice_seminar.common.constants.MemberConstant.DEFAULT_GROUP_NUMBER;
+import static com.example.parkminhyun.practice_seminar.common.constants.MemberConstant.MEMBER;
 
 /**
  * Data에 직접적으로 접근하는 Data Access Object Class
@@ -49,7 +49,6 @@ public class MemberFirebaseDAO extends BaseFirebaseDAO {
 
     public void addMember(MemberVO user, int index) {
         modify(databaseReference -> {
-
             String id = databaseReference.push().getKey();
             String groupIndex = String.valueOf(index + DEFAULT_GROUP_NUMBER);
             databaseReference.child(MEMBER).child(groupIndex).child(id).setValue(user);
