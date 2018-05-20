@@ -30,13 +30,10 @@ public class MemberHolder extends RecyclerView.ViewHolder {
     ImageView memberInfo;
 
     private MemberVO user;
-    private MemberItemClickListener memberItemClickListener;
 
-    public MemberHolder(View view, MemberItemClickListener memberItemClickListener) {
+    public MemberHolder(View view) {
         super(view);
         ButterKnife.bind(this, view);
-
-        this.memberItemClickListener = memberItemClickListener;
     }
 
     /**
@@ -54,10 +51,12 @@ public class MemberHolder extends RecyclerView.ViewHolder {
     @OnClick({R.id.memberCall, R.id.memberInfo})
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.memberCall) {
-            memberItemClickListener.onClickPhoneCall(user.getPhoneNum());
-        } else if (id == R.id.memberInfo) {
-            memberItemClickListener.onClickUserInfo(user);
+
+        switch (id) {
+            case R.id.memberCall:
+                break;
+            case R.id.memberInfo:
+                break;
         }
     }
 }

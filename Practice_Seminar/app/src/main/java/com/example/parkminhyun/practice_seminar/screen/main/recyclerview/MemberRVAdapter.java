@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import com.example.parkminhyun.practice_seminar.R;
 import com.example.parkminhyun.practice_seminar.common.vo.MemberVO;
-import com.example.parkminhyun.practice_seminar.screen.main.observer.MemberStatusData;
-import com.example.parkminhyun.practice_seminar.screen.main.observer.MemberStatusObserver;
 
 import java.util.List;
 
@@ -16,10 +14,9 @@ import java.util.List;
  * Created by ParkMinHyun on 2018-05-14.
  */
 
-public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder> implements MemberStatusObserver {
+public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder> {
 
     private List<MemberVO> memberVOList;
-    private MemberItemClickListener memberItemClickListener;
 
     public MemberRVAdapter(List<MemberVO> memberVOList) {
         this.memberVOList = memberVOList;
@@ -28,7 +25,7 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder> implemen
     @Override
     public MemberHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_item, parent, false);
-        MemberHolder holder = new MemberHolder(view, memberItemClickListener);
+        MemberHolder holder = new MemberHolder(view);
         return holder;
     }
 
@@ -42,28 +39,8 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberHolder> implemen
         return memberVOList.size();
     }
 
-    @Override
-    public void addMember(MemberVO user) {
-        int addedIndex = getItemCount();
-
-        memberVOList.add(user);
-        notifyItemInserted(addedIndex);
-    }
-
-    @Override
-    public void deleteMember(MemberVO user) {
-    }
-
     public void setMemberVOList(List<MemberVO> memberVOList) {
         this.memberVOList = memberVOList;
-    }
-
-    public void setOnClickItemListener(MemberItemClickListener memberItemClickListener) {
-        this.memberItemClickListener = memberItemClickListener;
-    }
-
-    public void setMemberStatusObserver(MemberStatusData observable) {
-        observable.addObserver(this);
     }
 
 }

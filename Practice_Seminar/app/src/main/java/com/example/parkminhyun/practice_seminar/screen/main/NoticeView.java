@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.example.parkminhyun.practice_seminar.R;
 import com.example.parkminhyun.practice_seminar.common.vo.MemberVO;
-import com.example.parkminhyun.practice_seminar.screen.main.observer.MemberStatusData;
-import com.example.parkminhyun.practice_seminar.screen.main.observer.MemberStatusObserver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +19,7 @@ import butterknife.ButterKnife;
  * Created by ParkMinHyun on 2018-05-15.
  */
 
-public class NoticeView extends LinearLayout implements MemberStatusObserver {
+public class NoticeView extends LinearLayout  {
 
     @BindView(R.id.noticeTextView)
     TextView noticeTextView;
@@ -48,19 +46,5 @@ public class NoticeView extends LinearLayout implements MemberStatusObserver {
     private void init(Context context) {
         inflate(context, R.layout.layout_notice, this);
         ButterKnife.bind(this);
-    }
-
-    @Override
-    public void addMember(MemberVO user) {
-        noticeTextView.setText(user.getName() + "님이 추가되었습니다!");
-    }
-
-    @Override
-    public void deleteMember(MemberVO user) {
-
-    }
-
-    public void setMemberStatusObserver(MemberStatusData observable) {
-        observable.addObserver(this);
     }
 }
