@@ -6,7 +6,7 @@ package com.example.parkminhyun.java_designpattern_seminar.screen.main.observer;
  */
 
 public interface MemberStatusObservable {
-    void addObserver(MemberStatusObserver sentenceHolderObserver);
-    void deleteObserver(MemberStatusObserver sentenceHolderObserver);
+    void addObserver(MemberStatusObserver memberStatusObserver);
+    void deleteObserver(MemberStatusObserver memberStatusObserver);
     void notifyObserver(int mode);
 }
