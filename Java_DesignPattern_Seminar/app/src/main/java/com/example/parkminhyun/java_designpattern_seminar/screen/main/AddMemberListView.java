@@ -29,11 +29,6 @@ public class AddMemberListView extends FrameLayout {
 
     @BindView(R.id.memberAddButton)
     View memberAddButton;
-
-    public void setOnClickButtonListener(OnClickListener onClickListener) {
-        this.memberAddButton.setOnClickListener(onClickListener);
-    }
-
     public AddMemberListView(Context context) {
         this(context, null);
     }
@@ -65,4 +60,9 @@ public class AddMemberListView extends FrameLayout {
     public String getPhoneNumText(){
         return phoneNumText.getText().toString();
     }
+
+    public void setOnClickButtonListener(OnClickListener onClickListener) {
+        this.memberAddButton.setOnClickListener(onClickListener);
+    }
+
 }

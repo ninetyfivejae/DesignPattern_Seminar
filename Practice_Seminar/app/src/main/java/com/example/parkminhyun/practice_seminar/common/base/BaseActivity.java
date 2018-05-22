@@ -24,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        createPresenter();
+//        createPresenter();
         initActivity();
         initEnterAnimation();
     }
@@ -116,7 +116,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract void init();
 
-    protected abstract void createPresenter();
+//    protected abstract void createPresenter();
 
     protected abstract Activity getViews();
 
