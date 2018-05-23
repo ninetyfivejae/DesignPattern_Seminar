@@ -42,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void initActivity() {
+        //메인택티비티에서 구현을 해놓아서 R.layout.activity_main을 반환을 함
         setContentView(getLayout());
 
         ButterKnife.bind(getViews());

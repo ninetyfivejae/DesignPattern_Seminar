@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface MainInterface {
 
+    //UI가 변경되는 메소드만 존재
     interface View {
         void clearTextView();
 
@@ -19,6 +20,7 @@ public interface MainInterface {
         void updateMemberRecyclerView(List<MemberVO> memberVOList);
     }
 
+    //기능만 수행되는 메소드만 존재
     interface Presenter {
         void init();
 

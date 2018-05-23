@@ -40,6 +40,7 @@ public class MemberStatusData implements MemberStatusObservable {
      */
     @Override
     public void notifyObserver(int mode) {
+        //옵저버들에게 알림을 주기위해
         for (MemberStatusObserver memberStatusObserver : memberStatusObservers) {
             switch (mode) {
                 case ADD_MEMBER:

@@ -25,6 +25,7 @@ import static com.example.parkminhyun.java_designpattern_seminar.common.constant
  * Created by ParkMinHyun on 2018-05-13.
  */
 
+//implements MainInterface를 하면 구현을 해야하는 메소드들을 만들어준다 자동으로
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
     @BindView(R.id.mainTabBar)
@@ -120,6 +121,8 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
 
     @Override
     public void updateMemberRecyclerView(List<MemberVO> memberVOList) {
+
+        //리스트가 바뀌었다고 알려주는 메소드 및 리싸이클러뷰 변경
         memberRVAdapter.setMemberVOList(memberVOList);
         memberRVAdapter.notifyDataSetChanged();
     }

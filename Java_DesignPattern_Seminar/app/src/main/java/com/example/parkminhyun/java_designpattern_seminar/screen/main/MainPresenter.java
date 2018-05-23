@@ -24,6 +24,7 @@ public class MainPresenter implements MainInterface.Presenter {
 
     private MainInterface.View mainView;
 
+    //모델, VO
     private List<MemberVO> memberVOList;
     private MemberModelProvider memberModelProvider;
 
